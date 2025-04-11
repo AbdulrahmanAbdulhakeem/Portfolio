@@ -1,24 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { IoMdHome } from "react-icons/io";
+import { FaTools, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { FaTools } from "react-icons/fa";
 
 function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <div>
-            <div className='flex text-slate-200 font-bold justify-between items-center p-2 bg-slate-900'>
-                <div className='p-5 ml-10'>
-                    <Link to='/'><IoMdHome className='h-10 w-10 text-emerald-600' /></Link>
-                </div>
-                <div>
-                    {/* <Link to='/about' className='p-5' >About Me</Link> */}
-                    <Link to='/tools' className='p-5'>Tools <FaTools className='inline' /></Link>
-                    <Link to='/projects' className='p-5'>Projects </Link>
-                    <Link to='/contact' className='p-5'>Contact Me </Link>
+        <nav className="bg-slate-900 text-slate-200 font-bold w-full">
+            <div className="flex justify-between items-center px-4 py-3">
+                <Link to='/' className='flex items-center space-x-2'>
+                    <IoMdHome className='h-8 w-8 text-emerald-600' />
+                    <span className="text-sm sm:inline hidden">Home</span>
+                </Link>
+
+                <button onClick={() => setIsOpen(!isOpen)} className="sm:hidden focus:outline-none">
+                    {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+                </button>
+
+                <div className="hidden sm:flex space-x-4 text-sm">
+                    <Link to='/tools' className="hover:text-emerald-400 transition">Tools <FaTools className='inline ml-1' /></Link>
+                    <Link to='/projects' className="hover:text-emerald-400 transition">Projects</Link>
+                    <Link to='/contact' className="hover:text-emerald-400 transition">Contact Me</Link>
                 </div>
             </div>
-        </div>
-    )
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div className="flex flex-col space-y-4 px-4 pb-4 text-sm sm:hidden">
+                    <Link to='/tools' onClick={() => setIsOpen(false)} className="hover:text-emerald-400">Tools <FaTools className='inline ml-1' /></Link>
+                    <Link to='/projects' onClick={() => setIsOpen(false)} className="hover:text-emerald-400">Projects</Link>
+                    <Link to='/contact' onClick={() => setIsOpen(false)} className="hover:text-emerald-400">Contact Me</Link>
+                </div>
+            )}
+        </nav>
+    );
 }
 
-export default Navbar
+export default Navbar;
