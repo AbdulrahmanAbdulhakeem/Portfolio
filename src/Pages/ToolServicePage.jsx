@@ -11,7 +11,6 @@ const TechStackServicesPage = () => {
     { name: 'CSS3', icon: FaCss3Alt, color: 'text-blue-500' },
     { name: 'JavaScript', icon: FaJsSquare, color: 'text-yellow-400' },
     { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-cyan-500' },
-    { name: 'Bootstrap', icon: SiBootstrap, color: 'text-purple-500' },
     // Add more frontend skills
   ];
 
@@ -25,7 +24,6 @@ const TechStackServicesPage = () => {
   const databases = [
     { name: 'MongoDB', icon: SiMongodb, color: 'text-green-600' },
     { name: 'MySQL', icon: SiMysql, color: 'text-blue-600' },
-    { name: 'Firebase', icon: FaFire, color: 'text-orange-600' },
     { name: 'PostgreSQL', icon: FaDatabase, color: 'text-blue-400' },
   ];
 
@@ -33,9 +31,6 @@ const TechStackServicesPage = () => {
     { name: 'Git', icon: FaGitAlt, color: 'text-orange-400' },
     { name: 'VS Code', icon: VscVscode, color: 'text-blue-300' },
     { name: 'Postman', icon: SiPostman, color: 'text-orange-600' },
-    { name: 'Heroku', icon: SiHeroku, color: 'text-purple-400' },
-    { name: 'Pusher', icon: SiPusher, color: 'text-pink-500' },
-    { name: 'Compass', icon: FaCompass, color: 'text-gray-500' },
   ];
 
   const servicesOffered = [
