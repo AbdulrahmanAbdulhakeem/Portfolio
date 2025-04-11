@@ -4,6 +4,7 @@ import swapMeme from '../assets/swapMeme.png'
 import movierec from '../assets/movierec.png'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { FaGithub } from 'react-icons/fa'
 
 function ProjectDisplay() {
   const projects = [
@@ -18,10 +19,15 @@ function ProjectDisplay() {
       link: "https://abdulrahmanabdulhakeem.github.io/SwapGard/"
     },
     {
-        name:"Movierec",
-        image:movierec,
-        link:"https://movie-rec-lime.vercel.app/"
+      name: "Movierec",
+      image: movierec,
+      link: "https://movie-rec-lime.vercel.app/"
     },
+    {
+      name: "View More on GitHub",
+      link: "https://github.com/AbdulrahmanAbdulhakeem?tab=repositories",
+      isGitHubCard: true
+    }
   ];
 
   return (
@@ -43,16 +49,27 @@ function ProjectDisplay() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-5 flex flex-col items-center"
+            className="bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-5 flex flex-col items-center text-center"
           >
             <Link to={project.link} target="_blank" rel="noopener noreferrer">
-              <img
-                src={project.image}
-                alt={`${project.name} Screenshot`}
-                className="w-full h-60 object-cover rounded-xl mb-4 hover:scale-105 transition-transform duration-300"
-              />
+              {!project.isGitHubCard ? (
+                <>
+                  <img
+                    src={project.image}
+                    alt={`${project.name} Screenshot`}
+                    className="w-full h-60 object-cover rounded-xl mb-4 hover:scale-105 transition-transform duration-300"
+                  />
+                  <p className="text-xl font-semibold text-slate-100">{project.name}</p>
+                </>
+              ) : (
+                <>
+                  <FaGithub className="text-6xl text-emerald-500 mb-4" />
+                  <p className="text-lg font-semibold text-slate-100">
+                    Explore more of my work on GitHub
+                  </p>
+                </>
+              )}
             </Link>
-            <p className="text-xl font-semibold text-slate-100">{project.name}</p>
           </motion.div>
         ))}
       </div>
